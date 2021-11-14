@@ -34,14 +34,14 @@
 
       <thead>
         <tr>
-          <th scope="col">ID#</th>
+          <th scope="col">ID</th>
           <th scope="col">Company</th>
           <th scope="col">Amount</th>
           <th scope="col">Billed</th>
           <th scope="col">Dued</th>
           <th scope="col">Status</th>
-          <th class="text-center" scope="col">Edit</th>
-          <th class="text-center" scope="col">Delete</th>
+          <th scope="col" class="text-center">Edit</th>
+          <th scope="col" class="text-center">Delete</th>
         </tr>
       </thead>
 

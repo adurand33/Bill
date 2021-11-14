@@ -7,7 +7,7 @@ let tempaddress = address.split("?")[0];
 
 ChangeUrl(address, tempaddress);
 
-//
+// function
 
 function ChangeUrl(page, url) {
 
