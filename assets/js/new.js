@@ -2,22 +2,22 @@
 
 let restyle = true;
 
-let mycompany = document.querySelector("#inputCompany");
-let myemail = document.querySelector("#inputEmail");
-let myaddress = document.querySelector("#inputAddress");
-let myamount = document.querySelector("#inputAmount");
-let mydued = document.querySelector("#inputDued");
-let mystatus = document.querySelector("#selectStatus");
-let mysubmit = document.querySelector("#submitNew");
+let mycompany = document.querySelector('#inputCompany');
+let myemail = document.querySelector('#inputEmail');
+let myaddress = document.querySelector('#inputAddress');
+let myamount = document.querySelector('#inputAmount');
+let mydued = document.querySelector('#inputDued');
+let mystatus = document.querySelector('#selectStatus');
+let mysubmit = document.querySelector('#submitNew');
 
 // first
 
-mycompany.addEventListener("input", stateEvent);
-myemail.addEventListener("input", stateEvent);
-myaddress.addEventListener("input", stateEvent);
-myamount.addEventListener("input", stateEvent);
-mydued.addEventListener("input", stateEvent);
-mystatus.addEventListener("input", stateEvent);
+mycompany.addEventListener('input', stateEvent);
+myemail.addEventListener('input', stateEvent);
+myaddress.addEventListener('input', stateEvent);
+myamount.addEventListener('input', stateEvent);
+mydued.addEventListener('input', stateEvent);
+mystatus.addEventListener('input', stateEvent);
 
 buttonize();
 

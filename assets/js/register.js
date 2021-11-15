@@ -2,18 +2,18 @@
 
 let restyle = true;
 
-let myemail = document.querySelector("#inputEmail");
-let mypseudo = document.querySelector("#inputPseudo");
-let mypassword = document.querySelector("#inputPassword");
-let mypassword2 = document.querySelector("#inputPassword2");
-let mysubmit = document.querySelector("#submitRegister");
+let myemail = document.querySelector('#inputEmail');
+let mypseudo = document.querySelector('#inputPseudo');
+let mypassword = document.querySelector('#inputPassword');
+let mypassword2 = document.querySelector('#inputPassword2');
+let mysubmit = document.querySelector('#submitRegister');
 
 // first
 
-myemail.addEventListener("input", stateEvent);
-mypseudo.addEventListener("input", stateEvent);
-mypassword.addEventListener("input", stateEvent);
-mypassword2.addEventListener("input", stateEvent);
+myemail.addEventListener('input', stateEvent);
+mypseudo.addEventListener('input', stateEvent);
+mypassword.addEventListener('input', stateEvent);
+mypassword2.addEventListener('input', stateEvent);
 
 buttonize();
 

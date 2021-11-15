@@ -1,7 +1,7 @@
 // inits
 
 let address = window.location.href;
-let tempaddress = address.split("?")[0];
+let tempaddress = address.split('?')[0];
 
 // change url
 
@@ -13,7 +13,7 @@ function ChangeUrl(page, url) {
 
   if (address == tempaddress) return;
 
-  if (typeof (history.pushState) != "undefined") {
+  if (typeof (history.pushState) != 'undefined') {
 
     let obj = {Page: page, Url: url};
 
@@ -21,6 +21,6 @@ function ChangeUrl(page, url) {
   }
   else {
 
-    window.location.href = "homePage";
+    window.location.href = 'homePage';
   }
 }

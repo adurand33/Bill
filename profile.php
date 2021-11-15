@@ -16,19 +16,24 @@ if (!empty($_SESSION)) {
   $success = $getUserByIdExecute->execute();
   $getUserData = $getUserByIdExecute->fetch();
 
-  if (isset($_GET['success'])) { echo '<div class="alert alert-success" role="alert">Password changed</div>'; }
-  if (isset($_GET['same'])) { echo '<div class="alert alert-danger" role="alert">Passwords are identical</div>'; }
-  if (isset($_GET['error'])) { echo '<div class="alert alert-danger" role="alert">Wrong password</div>'; }
+  // alert user
 
+  if (!empty($_GET)) {
+
+    if (isset($_GET['success'])) { echo '<div id="userAlert" data="success">Password changed</div>'; }
+    if (isset($_GET['same'])) { echo '<div id="userAlert" data="info">Passwords are identical</div>'; }
+    if (isset($_GET['error'])) { echo '<div id="userAlert" data="danger">Wrong password</div>'; }
+  }
 } ?>
 
+<script src="assets/js/warn.js"></script>
 <script src="assets/js/clear.js"></script>
 
 <div class="container">
 
   <?php if (isset($user)) { ?>
 
-    <form action="profilepost.php" method="POST">
+    <form class="d-flex flex-column align-items-center" action="profilepost.php" method="POST">
 
       <!-- password -->
       <div class="col-md-10 col-lg-5 mb-3">

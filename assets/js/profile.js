@@ -2,14 +2,14 @@
 
 let restyle = true;
 
-let mypassword = document.querySelector("#inputPassword");
-let mypassword2 = document.querySelector("#inputPassword2");
-let mysubmit = document.querySelector("#submitPass");
+let mypassword = document.querySelector('#inputPassword');
+let mypassword2 = document.querySelector('#inputPassword2');
+let mysubmit = document.querySelector('#submitPass');
 
 // first
 
-mypassword.addEventListener("input", stateEvent);
-mypassword2.addEventListener("input", stateEvent);
+mypassword.addEventListener('input', stateEvent);
+mypassword2.addEventListener('input', stateEvent);
 
 buttonize();
 

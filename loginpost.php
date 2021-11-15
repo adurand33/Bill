@@ -11,12 +11,12 @@ if (!empty($_POST)) {
 
 	if (!in_array('', $_POST)) {
 
-		// sanitize
+    // sanitize
 
-		$email = htmlspecialchars($_POST['email']);
-		$pass = htmlspecialchars($_POST['pass']);
+    $email = htmlspecialchars($_POST['email']);
+    $pass = htmlspecialchars($_POST['pass']);
 
-		// query
+    // query
 
     $getUserByEmailReq = "SELECT * FROM user WHERE email = :email";
     $getUserByEmailExecute = $connection->prepare($getUserByEmailReq);
@@ -30,7 +30,7 @@ if (!empty($_POST)) {
     $success = false;
     $unknown = empty($getUserData);
 
-		if (!$unknown) {
+    if (!$unknown) {
 
       $hash = $getUserData['password'];
 
@@ -44,9 +44,9 @@ if (!empty($_POST)) {
         $success = true;
       }
     }
-	}
+  }
 
-  header('Location:index.php?' . ($unknown ? 'unknown' : ($success ? 'login' : 'wrong')));
+  header('Location:index.php?' . ($unknown ? 'noemail' : ($success ? 'logged' : 'nopass')));
 
-	unset($_POST);
+  unset($_POST);
 }

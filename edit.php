@@ -10,7 +10,7 @@ if (!empty($_SESSION)) {
   $getStatusReq = 'SELECT * FROM status';
   $selectStatusData = $connection->query($getStatusReq)->fetchAll();
 
-  $invoice_id = $_POST['invoice_id'];
+  $invoice_id = isset($_POST['invoice_id']) ? $_POST['invoice_id'] : '0';
 
 //$editInvoiceReq = 'SELECT * FROM invoice WHERE id = :id';
 
@@ -24,37 +24,42 @@ if (!empty($_SESSION)) {
 
   $success = $editInvoiceExecute->execute();
   $editInvoiceData = $editInvoiceExecute->fetch();
-}
-?>
+
+  $company = $editInvoiceData ? $editInvoiceData['company_name'] : '';
+  $amount = $editInvoiceData ? $editInvoiceData['amount'] : '0';
+  $billed = $editInvoiceData ? $editInvoiceData['billed'] : '';
+  $dued = $editInvoiceData ? $editInvoiceData['dued'] : '';
+  $status_id = $editInvoiceData ? $editInvoiceData['status_id'] : 0;
+} ?>
 
 <div class="container">
 
   <?php if (isset($user)) { ?>
 
-    <form class="was-validated" action="editpost.php" method="POST">
+    <form class="was-validated d-flex flex-column align-items-center" action="editpost.php" method="POST">
 
       <!-- company -->
       <div class="col-md-10 col-lg-4 mb-3">
         <label class="form-label">Company</label>
-        <input type="text" class="form-control" id="inputCompany" name="company" value="<?= $editInvoiceData['company_name'] ?>" placeholder="Company name" disabled>
+        <input type="text" class="form-control" id="inputCompany" name="company" value="<?= $company ?>" placeholder="Company name" disabled>
       </div>
 
       <!-- amount -->
       <div class="col-md-10 col-lg-4 mb-3">
         <label class="form-label">Amount</label>
-        <input type="number" class="form-control" id="inputAmount" name="amount" value="<?= $editInvoiceData['amount'] ?>" placeholder="Customer email" disabled>
+        <input type="number" class="form-control" id="inputAmount" name="amount" value="<?= $amount ?>" placeholder="Amount" disabled>
       </div>
 
       <!-- billed -->
-       <div class="col-md-10 col-lg-4 mb-3">
+      <div class="col-md-10 col-lg-4 mb-3">
         <label class="form-label">Billed</label>
-        <input type="date" class="form-control" id="inputBilled" name="billed" value="<?= $editInvoiceData['billed'] ?>" disabled>
+        <input type="date" class="form-control" id="inputBilled" name="billed" value="<?= $billed ?>" disabled>
       </div>
 
       <!-- dued -->
       <div class="col-md-10 col-lg-4 mb-3">
         <label for="inputDued" class="form-label">Dued</label>
-        <input type="date" class="form-control" id="inputDued" name="dued" value="<?= $editInvoiceData['dued'] ?>" required>
+        <input type="date" class="form-control" id="inputDued" name="dued" value="<?= $dued ?>" required>
       </div>
 
       <!-- status -->
@@ -62,7 +67,7 @@ if (!empty($_SESSION)) {
         <label for="selectStatus" class="form-label">Status</label>
         <select class="form-select" id="selectStatus" name="status_id" required>
           <?php foreach ($selectStatusData as $status) { ?>
-            <option value="<?= $status['id'] ?>" <?= $status['id'] === $editInvoiceData['status_id'] ? 'selected' : '' ?> >
+            <option value="<?= $status['id'] ?>" <?= $status['id'] === $status_id ? 'selected' : '' ?> >
             <?=$status['updated'];?>
             </option>
           <?php } ?>
@@ -71,7 +76,7 @@ if (!empty($_SESSION)) {
 
       <!-- submit -->
       <div class="col-md-10 col-lg-4">
-        <input type="hidden" name="invoice_id" value="<?= $editInvoiceData['id'] ?>">
+        <input type="hidden" name="invoice_id" value="<?= $invoice_id ?>">
         <button class="btn btn-danger" id="submitEdit" name="editinvoice" type="submit">Update invoice</button>
       </div>
 

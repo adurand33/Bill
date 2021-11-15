@@ -2,14 +2,14 @@
 
 let restyle = true;
 
-let myemail = document.querySelector("#inputEmail");
-let mypassword = document.querySelector("#inputPassword");
-let mysubmit = document.querySelector("#submitLogin");
+let myemail = document.querySelector('#inputEmail');
+let mypassword = document.querySelector('#inputPassword');
+let mysubmit = document.querySelector('#submitLogin');
 
 // first
 
-myemail.addEventListener("input", stateEvent);
-mypassword.addEventListener("input", stateEvent);
+myemail.addEventListener('input', stateEvent);
+mypassword.addEventListener('input', stateEvent);
 
 buttonize();
 

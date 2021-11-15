@@ -10,9 +10,13 @@ if (!empty($_SESSION)) {
   $getStatusReq = 'SELECT * FROM status';
   $selectStatusData = $connection->query($getStatusReq)->fetchAll();
 
-  $company = ltrim(rtrim(htmlspecialchars($_POST['company'])));
-  $amount = $_POST['amount'];
-  $dued = $_POST['dued'];
+  $company = isset($_POST['company']) ? ltrim(rtrim(htmlspecialchars($_POST['company']))) : '';
+  $amount = isset($_POST['amount']) ? $_POST['amount'] : '';
+  $email = isset($_POST['email']) ? $_POST['email'] : '';
+  $address = isset($_POST['address']) ? $_POST['address'] : '';
+
+  $bill = date('Y-m-d');
+  $dued = isset($_POST['dued']) && !empty($_POST['dued']) ? $_POST['dued'] : date('Y-m-d', strtotime($bill . ' + 1 week'));
 
   // check company
 
@@ -24,14 +28,15 @@ if (!empty($_SESSION)) {
   $getCustomerData = $getCustomerExecute->fetch();
 
   $company = $getCustomerData ? $getCustomerData['company_name'] : $company;
-}
-?>
+  $email = $getCustomerData ? $getCustomerData['email'] : "";
+  $address = $getCustomerData ? $getCustomerData['address'] : "";
+} ?>
 
 <div class="container">
 
   <?php if (isset($user)) { ?>
 
-    <form class="was-validated" action="newpost.php" method="POST">
+    <form class="was-validated d-flex flex-column align-items-center" action="newpost.php" method="POST">
 
       <!-- company -->
       <div class="col-md-10 col-lg-5 mb-3">
@@ -42,13 +47,13 @@ if (!empty($_SESSION)) {
       <!-- email -->
       <div class="col-md-10 col-lg-5 mb-3">
         <label for="inputEmail" class="form-label">Email</label>
-        <input type="email" class="form-control" id="inputEmail" name="email" value="<?= $getCustomerData['email'] ?>" placeholder="Customer email" required>
+        <input type="email" class="form-control" id="inputEmail" name="email" value="<?= $email ?>" placeholder="Customer email" required>
       </div>
 
       <!-- address -->
       <div class="col-md-10 col-lg-5 mb-3">
         <label for="inputAddress" class="form-label">Address</label>
-        <textarea class="form-control" id="inputAddress" name="address" rows="3" placeholder="Customer address" required><?= $getCustomerData['address'] ?></textarea>
+        <textarea class="form-control" id="inputAddress" name="address" rows="3" placeholder="Customer address" required><?= $address ?></textarea>
       </div>
 
       <!-- amount -->
@@ -76,7 +81,7 @@ if (!empty($_SESSION)) {
       </div>
 
       <!-- submit -->
-      <div class="col-md-10 mb-3">
+      <div class="col-md-10 col-lg-5">
         <input type="hidden" name="invoice_id" value="<?= $editInvoiceData['id'] ?>">
         <button type="submit" class="btn btn-danger" id="submitNew" name="addinvoice">Add invoice</button>
       </div>

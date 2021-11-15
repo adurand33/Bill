@@ -2,20 +2,20 @@
 
 let restyle = true;
 
-let mycompany = document.querySelector("#inputCompany");
-let myamount = document.querySelector("#inputAmount");
-let mybilled = document.querySelector("#inputBilled");
-let mydued = document.querySelector("#inputDued");
-let mystatus = document.querySelector("#selectStatus");
-let mysubmit = document.querySelector("#submitEdit");
+let mycompany = document.querySelector('#inputCompany');
+let myamount = document.querySelector('#inputAmount');
+let mybilled = document.querySelector('#inputBilled');
+let mydued = document.querySelector('#inputDued');
+let mystatus = document.querySelector('#selectStatus');
+let mysubmit = document.querySelector('#submitEdit');
 
 // first
 
-mycompany.addEventListener("input", stateEvent);
-myamount.addEventListener("input", stateEvent);
-mybilled.addEventListener("input", stateEvent);
-mydued.addEventListener("input", stateEvent);
-mystatus.addEventListener("input", stateEvent);
+mycompany.addEventListener('input', stateEvent);
+myamount.addEventListener('input', stateEvent);
+mybilled.addEventListener('input', stateEvent);
+mydued.addEventListener('input', stateEvent);
+mystatus.addEventListener('input', stateEvent);
 
 buttonize();
 
