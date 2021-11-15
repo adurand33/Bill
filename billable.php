@@ -21,7 +21,7 @@
 
   <!-- submit -->
   <div class="col-auto">
-    <button type="submit" class="btn btn-warning btn-lg" name="addinvoice">📬</button>
+    <button type="submit" class="btn btn-info" name="addinvoice">📬</button>
   </div>
 
 </form>
@@ -65,7 +65,7 @@
             <form action="deletepost.php" method="POST">
               <input type="hidden" name="invoice_id" value="<?= $invoice['id'] ?>">
               <input type="hidden" name="csrftoken" value="<?= $_SESSION['token'] ?>">
-              <td class="text-center"><button type="submit" class="btn btn-primary" id="" name="delinvoice">🧺</</button></td>
+              <td class="text-center"><button type="submit" class="btn btn-danger" id="" name="delinvoice">🧺</</button></td>
             </form>
           </tr>
 

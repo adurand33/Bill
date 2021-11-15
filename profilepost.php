@@ -30,6 +30,7 @@ if (!empty($_SESSION)) {
       $success = $getPasswordExecute->execute();
       $getPasswordData = $getPasswordExecute->fetch();
 
+      $success = false;
       $hash = $getPasswordData['password'];
 
       // password ok

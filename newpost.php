@@ -17,7 +17,7 @@ if (!empty($_SESSION)) {
 
       $company = htmlspecialchars($_POST['company']);
 
-      // check company
+      // find customer
 
       $getCustomerReq = "SELECT * FROM customer WHERE LOWER(company_name) = :company_name";
       $getCustomerExecute = $connection->prepare($getCustomerReq);

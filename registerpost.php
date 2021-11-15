@@ -49,6 +49,7 @@ if (!empty($_POST)) {
         $addUserExecute->bindValue(':email', $email, PDO::PARAM_STR);
         $addUserExecute->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
         $addUserExecute->bindValue(':password', $hash, PDO::PARAM_STR);
+
         $success = $addUserExecute->execute();
       }
     }

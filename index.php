@@ -21,18 +21,22 @@ if (!empty($_SESSION)) {
   $getInvoicesData = $getInvoicesExecute->fetchAll();
 }
 
-if (isset($_GET['login'])) { echo '<div class="alert alert-success" role="alert">Logged in</div>'; }
-if (isset($_GET['unknown'])) { echo '<div class="alert alert-danger" role="alert">Unknown email address</div>'; }
-if (isset($_GET['wrong'])) { echo '<div class="alert alert-danger" role="alert">Wrong password</div>'; }
-if (isset($_GET['deleted'])) { echo '<div class="alert alert-success" role="alert">Invoice deleted</div>'; }
-if (isset($_GET['nodelete'])) { echo '<div class="alert alert-danger" role="alert">Error while deleting invoice</div>'; }
-if (isset($_GET['updated'])) { echo '<div class="alert alert-success" role="alert">Invoice updated</div>'; }
-if (isset($_GET['noupdate'])) { echo '<div class="alert alert-danger" role="alert">Error while updating invoice</div>'; }
-if (isset($_GET['inserted'])) { echo '<div class="alert alert-success" role="alert">Invoice inserted</div>'; }
-if (isset($_GET['noinsert'])) { echo '<div class="alert alert-danger" role="alert">Error while inserting invoice</div>'; }
+// alert user
 
-?>
+if (!empty($_GET)) {
 
+  if (isset($_GET['logged'])) { echo '<div id="userAlert" data="success">Logged in</div>'; }
+  if (isset($_GET['noemail'])) { echo '<div id="userAlert" data="danger">Unknown email address</div>'; }
+  if (isset($_GET['nopass'])) { echo '<div id="userAlert" data="danger">Wrong password</div>'; }
+  if (isset($_GET['deleted'])) { echo '<div id="userAlert" data="info">Invoice deleted</div>'; }
+  if (isset($_GET['nodelete'])) { echo '<div id="userAlert" data="info">Error while deleting invoice</div>'; }
+  if (isset($_GET['updated'])) { echo '<div id="userAlert" data="success">Invoice updated</div>'; }
+  if (isset($_GET['noupdate'])) { echo '<div id="userAlert" data="info">Error while updating invoice</div>'; }
+  if (isset($_GET['inserted'])) { echo '<div id="userAlert" data="success">Invoice created</div>'; }
+  if (isset($_GET['noinsert'])) { echo '<div id="userAlert" data="info">Error while creating invoice</div>'; }
+} ?>
+
+<script src="assets/js/warn.js"></script>
 <script src="assets/js/clear.js"></script>
 
 <div class="container">
