@@ -7,15 +7,15 @@ CREATE DATABASE bill CHARACTER SET utf8;
 
 USE bill;
 
-CREATE TABLE user (
+CREATE TABLE bill.user (
 
-  id MEDIUMINT unsigned PRIMARY KEY AUTO_INCREMENT, #  max id 16,777,215
+  id MEDIUMINT unsigned PRIMARY KEY AUTO_INCREMENT, # max id 16,777,215
   email VARCHAR(64) NOT NULL,                       #+ email
   pseudo VARCHAR(32) NOT NULL,                      #+ pseudo
   password VARCHAR(255) NOT NULL                    #+ password
 );
 
-CREATE TABLE customer (
+CREATE TABLE bill.customer (
 
   id MEDIUMINT unsigned PRIMARY KEY AUTO_INCREMENT, #  max id 16,777,215
   company_name VARCHAR(32) NOT NULL,                #+ company_name
@@ -25,13 +25,13 @@ CREATE TABLE customer (
   FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
-CREATE TABLE status (
+CREATE TABLE bill.status (
 
   id TINYINT unsigned PRIMARY KEY AUTO_INCREMENT, # max 255
   updated VARCHAR (4) NOT NULL
 );
 
-CREATE TABLE invoice (
+CREATE TABLE bill.invoice (
 
   id MEDIUMINT unsigned PRIMARY KEY AUTO_INCREMENT, #  max id 16,777,215
   amount MEDIUMINT unsigned DEFAULT NULL,           #+ max 16,777,215
@@ -49,27 +49,27 @@ CREATE TABLE invoice (
 # database content
 #
 
-INSERT INTO status (updated) VALUES
+INSERT INTO bill.status (updated) VALUES
 ('BILL'), # billed
 ('DUED'), # dued
 ('PROB'), # prob
 ('PAID'), # paid
 ('XXXX'); # unlisted
 
-INSERT INTO user (id, email, pseudo, password) VALUES
+INSERT INTO bill.user (id, email, pseudo, password) VALUES
 (1, 'a@a.a', 'a', '$2y$10$dIzP/rt4oQaMPBOqlGzDpesjUW81imSFh1LxNNJqkoCGzZSuv5bM6'), # password 'a'
 (2, 'b@b.b', 'b', '$2y$10$AI4c2mCWyN9sP4W5chqZIeIdjupANJTs7KG.u4F.k3caLIL0q8V22'), # password 'b'
 (3, 'c@c.c', 'c', '$2y$10$CY29DK8gBu99mGfnTUzLFOsw59.Mfqio/odJRO4wPwNQ42cpJuo5q'), # password 'c'
 (4, 'd@d.d', 'd', '$2y$10$2x8V/8w8Nu.JIFb93OS63.nnBB99/9oNlzn/SV2aSym/4LbyoBghG'); # password 'd'
 
-INSERT INTO customer (id, email, address, company_name, user_id) VALUES
+INSERT INTO bill.customer (id, email, address, company_name, user_id) VALUES
 (1, 'gustave.germany@germany.de', '22, Place des Victoires, 14000 BERLIN', 'WinnersOnline', 1),
 (2, 'salome.spain@spain.es', '44, Rue du Sacre, 25000 MADRID', 'SaltForSlugs', 1),
 (3, 'pedro.portugal@portugal.pt', '88, Rue du Putsch, 18000 LISBONNE', 'ConceptTools', 2),
 (4, 'baltus.belgium@belgium.be', '111, Avenue de Waterloo, 10001 BRUXELLES', 'DesignWays', 3),
 (5, 'anders.austria@austria.at', '9, Impasse Mozart, 99000 VIENNE', 'TooFarGone', 4);
 
-INSERT INTO invoice (id, amount, billed, dued, customer_id, status_id, user_id) VALUES # invoices with dates
+INSERT INTO bill.invoice (id, amount, billed, dued, customer_id, status_id, user_id) VALUES # invoices with dates
 (1, 1500, '2021-08-18', '2021-09-15', 1, 1, 1),
 (2, 750,  '2021-09-15', '2021-12-15', 1, 2, 1),
 (3, 525,  '2021-09-30', '2021-12-20', 1, 2, 1),
