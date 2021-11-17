@@ -65,7 +65,7 @@
             <form action="deletepost.php" method="POST">
               <input type="hidden" name="invoice_id" value="<?= $invoice['id'] ?>">
               <input type="hidden" name="csrftoken" value="<?= $_SESSION['token'] ?>">
-              <td class="text-center"><button type="submit" class="btn btn-danger" id="" name="delinvoice">🧺</</button></td>
+              <td class="text-center"><button type="submit" class="btn btn-danger" id="" name="delinvoice">🧺</button></td>
             </form>
           </tr>
 
